@@ -8,7 +8,10 @@
 </head>
 <body>
 <div>
-    <span th:text="${user.getRoles()}">  </span>
+    <form name="product" th:action="@{/order}" method="post">
+
+
+    <span th:text="${user.getUsername()}">  </span>
     <br>
     <span th:text="${prod.getId()}">  </span>
     <br>
@@ -18,7 +21,11 @@
     <br>
     <span th:text="${prod.getImg()}">  </span>
     <br>
-    <h1>Hello</h1>
+    <h2>Are you sure?</h2>
+        <input type="hidden" th:id="product" th:name="product" th:value="*{prod.id}">
+        <input type="submit">
+    </form>
+
 </div>
 </body>
 </html>

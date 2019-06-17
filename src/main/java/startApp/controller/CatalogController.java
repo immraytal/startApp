@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import startApp.entities.Product;
 import startApp.entities.User;
+import startApp.service.OrderService;
 import startApp.service.ProductService;
 import startApp.service.UserService;
 
@@ -25,19 +26,15 @@ public class CatalogController {
 
 
 
+
     @GetMapping
     public ModelAndView catalogGet(){
         ModelAndView modelAndView = new ModelAndView();
        List<Product> products = productService.findAllProducts();
-       // List<Product> products = new ArrayList<>();
-       //Product product = new Product(0L, "someName", 123.12, "/resources/img/mebla.jpg");
-      //  products.add(product);
-       // productService.saveProduct(product);
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         User user = userService.findByUsername(auth.getName());
         modelAndView.addObject("user", user);
-
         modelAndView.setViewName("catalog");
         modelAndView.addObject("products", products);
         return modelAndView;

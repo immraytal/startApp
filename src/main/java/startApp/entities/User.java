@@ -9,7 +9,6 @@ import java.util.Set;
 
 @Data
 @Entity
-@Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "user")
@@ -37,22 +36,22 @@ public class User {
     private Set<Role> roles;
 
 
-//    @OneToMany(
-//            mappedBy = "user",
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true
-//    )
-//    List<Order> orderList = new ArrayList<>();
-//
-//    public void addOrder(Order order) {
-//    orderList.add(order);
-//    order.setUser(this);
-//    }
-//
-//    public void removeOrder(Order order){
-//        orderList.remove(order);
-//        order.setUser(null);
-//    }
+    @OneToMany(
+            mappedBy = "user",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    List<Order> orderList = new ArrayList<>();
+
+    public void addOrder(Order order) {
+    orderList.add(order);
+    order.setUser(this);
+    }
+
+    public void removeOrder(Order order){
+        orderList.remove(order);
+        order.setUser(null);
+    }
 
 
 }
