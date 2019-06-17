@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="button-group" sec:authorize="!isFullyAuthenticated()">
+    <a th:href="@{/login}">login</a><br>
+    <a th:href="@{/registration}">registration</a><br>
+
+    <!--<a th:href="@{/passwordreset}">forgot password</a>-->
+</div>
+<div class="button-group" sec:authorize="isFullyAuthenticated()">
+    <a href="/logout">Logout</a>
+    <br>
+    <a th:href="@{/catalog}">Catalog</a><br>
+    <a th:href="@{/admin}">Admin</a><br>
+    <br>
+    <div th:if="${user != null}">
+        <span th:text="*{user.id}"></span><br>
+        <span th:text="*{user.username}"></span><br>
+        <span th:text="*{user.password}"></span><br>
+        <br>
+    </div>
+</div>
+
+</body>
+</html>

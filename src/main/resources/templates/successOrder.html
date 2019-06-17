@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+</head>
+<body>
+<div>
+    <span th:text="${user.getRoles()}">  </span>
+    <br>
+    <span th:text="${prod.getId()}">  </span>
+    <br>
+    <span th:text="${prod.getName()}">  </span>
+    <br>
+    <span th:text="${prod.getPrice()}">  </span>
+    <br>
+    <span th:text="${prod.getImg()}">  </span>
+    <br>
+</div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<a th:href="@{/}">Назад в main</a><br>
+<form th:action="@{/login}" method="POST">
+    <span class="form-title">Вход</span>
+    <br>
+
+    <label>Адрес электронной почты<br>
+        <input type="text" th:name="email" placeholder="Email">
+    </label>
+    <br>
+
+    <label>Пароль<br>
+        <input type="password" th:name="password" placeholder="Password">
+    </label>
+    <br>
+
+    <input type="submit" class="button-1" style="cursor: pointer;" value="Login">
+    <br>
+    <a th:href="@{/forgotpassword}" class="lost-password">Забыли пароль?</a>
+    <br>
+    <a th:href="@{registration}"  class="registration">Регистрация</a>
+</form>
+</body>
+</html>

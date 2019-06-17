@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Page</title>
+</head>
+<body>
+    <a th:href="@{/main}">Назад в main</a><br>
+        <div>
+            <th:block th:each="user : ${users}">
+                <div>
+                    <span th:text="${user.getId()}"> </span>
+                    <br>
+                    <span th:text="${user.getUsername()}"> </span>
+                    <br>
+                    <span th:text="${user.getPassword()}"> </span>
+                    <br>
+                    <span th:text="${user.getRoles()}"> </span>
+                    <br>
+                    <span th:text="${user.getMatchingPassword()}"> </span>
+                    <br>
+                </div>
+
+                <form action="/admin" method="post">
+                    <input type="submit" value="Delete">
+                </form>
+
+            </th:block>
+        </div>
+
+</body>
+</html>
