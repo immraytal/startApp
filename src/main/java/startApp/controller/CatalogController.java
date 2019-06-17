@@ -44,12 +44,13 @@ public class CatalogController {
     }
 
     @PostMapping
-    public ModelAndView createOrder(@ModelAttribute("user") User user, @ModelAttribute("product") Product product) {
+    public ModelAndView createOrder(@ModelAttribute("product") Product product) {
+        System.out.println(product.getId());
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("successOrder");
-        modelAndView.addObject("user", user);
-        modelAndView.addObject("prod", product);
+        modelAndView.setViewName("order");
+        modelAndView.addObject("prod", productService.getById(product.getId()));
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        modelAndView.addObject("user",userService.findByUsername(auth.getName()));
         return modelAndView;
     }
-
 }

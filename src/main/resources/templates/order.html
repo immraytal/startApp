@@ -1,12 +1,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" lang="en">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Order Page</title>
+    <title>Success</title>
 </head>
 <body>
-<a th:href="@{/main}">Назад в main</a><br>
 <div>
+    <span th:text="${user.getRoles()}">  </span>
+    <br>
     <span th:text="${prod.getId()}">  </span>
     <br>
     <span th:text="${prod.getName()}">  </span>
@@ -15,20 +18,7 @@
     <br>
     <span th:text="${prod.getImg()}">  </span>
     <br>
+    <h1>Hello</h1>
 </div>
-
-<form th:action="@{/order/{id}}" method="POST">
-    <label>Никнейм
-        <input type="text" th:field="*{order.getOrderPrice()}" th:name="username" placeholder="username">
-    </label>
-    <br>
-    <label>Пароль
-        <input type="text" th:field="*{order.getUserId()}" th:name="password" placeholder="Пароль">
-    </label>
-    <br>
-    <br>
-    <input type="submit" value="Зарегистрировать Order">
-</form>
-
 </body>
 </html>

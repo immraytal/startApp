@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import startApp.entities.Order;
 import startApp.entities.Product;
 import startApp.service.ProductService;
 
@@ -22,17 +21,17 @@ public class OrderController {
         modelAndView.setViewName("order");
         Product product = productService.getById(id);
         modelAndView.addObject("prod", product);
-        Order order = new Order();
-        modelAndView.addObject("order" , order);
+//        Order order = new Order();
+//        modelAndView.addObject("order" , order);
         return modelAndView;
     }
 
-    @PostMapping("/{id}")
-    public ModelAndView createOrder(@PathVariable("id") long id, @SessionAttribute(value = "id") long UserId, @ModelAttribute("order") Order order) {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("successOrder");
-        modelAndView.addObject("order", order);
-//        orderService.saveOrder(order);
-        return modelAndView;
-    }
+//    @PostMapping("/{id}")
+//    public ModelAndView createOrder(@PathVariable("id") long id, @SessionAttribute(value = "id") long UserId, @ModelAttribute("order") Order order) {
+//        ModelAndView modelAndView = new ModelAndView();
+//        modelAndView.setViewName("successOrder");
+//        modelAndView.addObject("order", order);
+////        orderService.saveOrder(order);
+//        return modelAndView;
+//    }
 }
