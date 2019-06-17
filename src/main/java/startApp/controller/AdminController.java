@@ -33,7 +33,6 @@ public class AdminController{
     @PostMapping
     public ModelAndView adminEdit(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
         userService.deleteByUsername(user.getUsername());
-        ModelAndView modelAndView = adminGet();
-        return modelAndView;
+        return adminGet();
     }
 }

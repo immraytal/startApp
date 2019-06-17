@@ -23,6 +23,8 @@ public class CatalogController {
     @Autowired
     UserService userService;
 
+
+
     @GetMapping
     public ModelAndView catalogGet(){
         ModelAndView modelAndView = new ModelAndView();

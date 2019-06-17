@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Table(name = "order")
 public class Order {
 
     @Id
@@ -17,14 +18,16 @@ public class Order {
     @Column(name = "order_id")
     private long id;
 
-    @Column(name = "user_id")
-    private long userId;
-
     @Column(name = "order_price")
     private double orderPrice;
 
     @Column(name = "status")
     private String status;
 
+
+//
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name="user_id")
+//    private User user;
 }
 

@@ -6,15 +6,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import startApp.entities.Order;
 import startApp.entities.Product;
-import startApp.service.OrderService;
 import startApp.service.ProductService;
 
 @Controller
 @RequestMapping("/order")
 public class OrderController {
 
-    @Autowired
-    OrderService orderService;
 
     @Autowired
     ProductService productService;
@@ -35,7 +32,7 @@ public class OrderController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("successOrder");
         modelAndView.addObject("order", order);
-        orderService.saveOrder(order);
+//        orderService.saveOrder(order);
         return modelAndView;
     }
 }

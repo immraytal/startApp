@@ -22,8 +22,8 @@
                     <br>
                 </div>
 
-                <form action="/admin" method="post">
-                    <input type="submit" value="Delete">
+                <form action="#" th:action="@{/admin}"  th:object="${user}" method="post">
+                    <input type="submit" value="Delete"/>
                 </form>
 
             </th:block>
