@@ -26,6 +26,32 @@
         <span th:text="*{user.password}"></span><br>
         <br>
     </div>
+
+    <div th:if="${user.getOrderList() != null}">
+        <th:block th:each="order : ${user.getOrderList()}">
+            <div>
+                <span th:text="${order.getId()}">  </span>
+                <br>
+                <span th:text="${order.getOrderPrice()}">  </span>
+                <br>
+                <span th:text="${order.getStatus()}">  </span>
+                <br>
+                <div th:if="${order.getProducts() != null}">
+                    <th:block th:each="prod : ${order.getProducts()}">
+                        <span th:text="${prod.getId()}">  </span>
+                        <br>
+                        <span th:text="${prod.getName()}">  </span>
+                        <br>
+                        <span th:text="${prod.getPrice()}">  </span>
+                        <br>
+                        <span th:text="${prod.getImg()}">  </span>
+                        <br>
+                    </th:block>
+                </div>
+                <br>
+            </div>
+        </th:block>
+    </div>
 </div>
 
 </body>
