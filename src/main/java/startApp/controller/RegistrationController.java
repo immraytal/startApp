@@ -17,6 +17,8 @@ import javax.validation.Valid;
 @RequestMapping("/registration")
 public class RegistrationController {
 
+
+
     @Autowired
     private UserService userService;
 
@@ -41,6 +43,7 @@ public class RegistrationController {
             bindingResult
                     .rejectValue("username", "error.user",
                             "There is already a user registered with the email provided");
+
         }
 
         if(!user.getPassword().equals(user.getMatchingPassword())){

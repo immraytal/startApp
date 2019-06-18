@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import startApp.entities.Product;
 import startApp.repository.ProductRepository;
+import startApp.service.ProductService;
 
 import javax.validation.Valid;
 
@@ -17,7 +18,7 @@ import javax.validation.Valid;
 public class ProductController {
 
     @Autowired
-    ProductRepository productRepository;
+    ProductService productService;
 
     @GetMapping
     public ModelAndView createPageGet(){
@@ -31,7 +32,7 @@ public class ProductController {
     @PostMapping
     public ModelAndView saveProduct(@Valid @ModelAttribute("product") Product product) {
         ModelAndView modelAndView = new ModelAndView();
-        productRepository.save(product);
+        productService.saveProduct(product);
         modelAndView.setViewName("redirect:/catalog");
         return modelAndView;
     }

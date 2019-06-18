@@ -1,5 +1,7 @@
 package startApp.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,6 +27,8 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController{
 
+    Logger logger = LoggerFactory.getLogger(AdminController.class);
+
     @Autowired
     UserService userService;
 
@@ -43,6 +47,7 @@ public class AdminController{
         modelAndView.addObject("admin", admin);
         modelAndView.addObject("users", users);
         modelAndView.setViewName("admin");
+        logger.info("Admin " + admin.getId() + " try get admin page");
         return modelAndView;
     }
 
@@ -63,7 +68,7 @@ public class AdminController{
             product.setInOrder(false);
         }
         orderService.deleteByUser(target);
-
+logger.info("Order " + target.getId()+ " has been removed");
     return  adminGet();
     }
 }

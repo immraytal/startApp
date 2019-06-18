@@ -1,6 +1,8 @@
 package startApp.controller;
 
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -25,6 +27,9 @@ import java.util.List;
 @RequestMapping({"/","/main"})
 public class MainController {
 
+
+    Logger logger = LoggerFactory.getLogger(MainController.class);
+
     @Autowired
     UserService userService;
 
@@ -43,6 +48,7 @@ public class MainController {
             modelAndView.addObject("user", user);
         } catch (Exception e){
             e.printStackTrace();
+            logger.error(e.getMessage());
         }
         modelAndView.setViewName("main");
         return modelAndView;
