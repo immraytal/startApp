@@ -32,8 +32,7 @@ public class Order {
     private User user;
 
     @OneToMany(
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
+            orphanRemoval = false
     )
     private List<Product> products = new ArrayList<>();
 }

@@ -41,7 +41,7 @@ public class OrderController {
     @PostMapping
     public ModelAndView confirmOrder(@ModelAttribute("product") Product product) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("successorder");
+        modelAndView.setViewName("redirect:/main");
 
         Product product1 = productService.getById(product.getId());
         modelAndView.addObject("product", product1);
@@ -53,12 +53,12 @@ public class OrderController {
         if (order==null) {
             order= new Order(1L, product1.getPrice(), "created", user, new ArrayList<Product>());
             order.getProducts().add(product1);
-            System.out.println("new");
+            product1.setInOrder(true);
             orderService.saveOrder(order);
             return modelAndView;
         }
-        System.out.println("old");
         order.getProducts().add(product1);
+        product1.setInOrder(true);
         order.setOrderPrice(order.getOrderPrice() + product1.getPrice());
         orderService.saveOrder(order);
         return modelAndView;

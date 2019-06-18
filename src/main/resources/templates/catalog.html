@@ -7,7 +7,7 @@
     <title>Catalog</title>
 </head>
     <body>
-       <a th:href="@{/main}">Назад в main</a><br>
+       <a th:href="@{/main}">Back to main</a><br>
 
         <div>
            <div th:if="${products != null}">
@@ -27,12 +27,12 @@
                           <td> <span th:text="${prod.getId()}">  </span>  </td>
                           <td>  <span th:text="${prod.getName()}">  </span>  </td>
                           <td>  <span th:text="${prod.getPrice()}">  </span>  </td>
-                          <td>  <span th:text="${prod.getImg()}">  </span>  </td>
+                          <td>  <img th:src="@{${prod.getImg()}}" th:width="177" th:height="100"/>  </td>
                           <div class="button-group" sec:authorize="isFullyAuthenticated()">
                              <td>
                                   <form name="product" th:action="@{/catalog}" method="post">
                                       <input type="hidden" th:id="product" th:name="product" th:value="*{prod.id}">
-                                      <input type="submit">
+                                      <input type="submit" value="Make order">
                                   </form>
                             </td>
                           </div>

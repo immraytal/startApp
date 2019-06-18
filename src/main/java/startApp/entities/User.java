@@ -3,6 +3,7 @@ package startApp.entities;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -20,8 +21,10 @@ public class User {
     private long id;
 
     @Column(name = "username")
+    @NotEmpty
     private String username;
 
+    @NotEmpty
     @Column(name = "password")
     private String password;
 

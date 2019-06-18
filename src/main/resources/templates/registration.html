@@ -10,19 +10,19 @@
 <a th:href="@{/main}">Назад в main</a><br>
 
 <form th:action="@{/registration}" method="POST">
-    <label>Никнейм
+    <label>Username
         <input type="text" th:field="*{user.username}" th:name="username" placeholder="username">
     </label>
     <br>
-    <label>Пароль
-        <input type="text" th:field="*{user.password}" th:name="password" placeholder="Пароль">
+    <label>Password
+        <input type="text" th:field="*{user.password}" th:name="password" placeholder="password">
     </label>
     <br>
-    <label>Повторный пароль
-        <input type="text" th:field="*{user.matchingPassword}" th:name="mathcingPassword" placeholder="Повторный пароль">
+    <label>Repeat password
+        <input type="text" th:field="*{user.matchingPassword}" th:name="mathcingPassword" placeholder="repeat password">
     </label>
     <br>
-    <input type="submit" value="Зарегистрироваться">
+    <input type="submit" value="Sign up">
 </form>
 
 </body>

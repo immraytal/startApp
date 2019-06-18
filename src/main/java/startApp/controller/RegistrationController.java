@@ -39,7 +39,7 @@ public class RegistrationController {
 
         if (userExists != null) {
             bindingResult
-                    .rejectValue("email", "error.user",
+                    .rejectValue("username", "error.user",
                             "There is already a user registered with the email provided");
         }
 
@@ -47,6 +47,7 @@ public class RegistrationController {
             bindingResult
                     .rejectValue("matchingPassword", "error.user",
                             "Failed in Confirming password.");
+
         }
 
         if (bindingResult.hasErrors()) {

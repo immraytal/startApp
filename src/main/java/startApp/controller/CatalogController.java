@@ -12,6 +12,7 @@ import startApp.service.OrderService;
 import startApp.service.ProductService;
 import startApp.service.UserService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -30,7 +31,13 @@ public class CatalogController {
     @GetMapping
     public ModelAndView catalogGet(){
         ModelAndView modelAndView = new ModelAndView();
-       List<Product> products = productService.findAllProducts();
+        List<Product> productsFromBase = productService.findAllProducts();
+        List<Product> products = new ArrayList<>();
+        for (Product prod: productsFromBase){
+            if (!prod.isInOrder()) {
+                products.add(prod);
+            }
+        }
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         User user = userService.findByUsername(auth.getName());

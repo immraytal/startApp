@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creating product</title>
+</head>
+<body>
+<a th:href="@{/main}">Back to main</a><br>
+
+<form th:action="@{/product}" method="POST">
+    <label>Product name
+        <input type="text" th:field="*{product.name}" th:name="name" placeholder="Name">
+    </label>
+    <br>
+    <label>Price
+        <input type="text" th:field="*{product.price}" th:name="price" placeholder="Price">
+    </label>
+    <br>
+    <label>Img
+        <input type="text" th:field="*{product.img}" th:name="img" placeholder="Img">
+    </label>
+    <input type="submit" value="Add">
+</form>
+</body>
+</html>

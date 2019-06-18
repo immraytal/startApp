@@ -12,7 +12,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Table(name = "product")
 public class Product {
-
     @Id
     @GeneratedValue
     @Column(name = "product_id")
@@ -27,6 +26,6 @@ public class Product {
     @Column(name = "img")
     private String img;
 
-
-
+    @Column(name = "inOrder")
+    private boolean inOrder = false;
 }

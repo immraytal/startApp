@@ -6,12 +6,14 @@
     <title>Admin Page</title>
 </head>
 <body>
-    <a th:href="@{/main}">Назад в main</a><br>
+    <a th:href="@{/main}">Back to main</a><br>
         <div>
             <table border="1">
                 <tr>
                     <th>User</th>
-                    <th>Delete</th>
+                    <th>Delete user</th>
+                    <th>Order</th>
+                    <th>Delete order</th>
                 </tr>
                 <tr th:each="user : ${users}">
                     <td>
@@ -29,15 +31,45 @@
                                 </tr>
                             </table>
                         </div>
-                         <td>
+
+
+                    </td>
+
+                    <td>
+                        <div th:unless="${admin.id} == ${user.id}">
                             <form name="user" th:action="@{/admin}"   method="post">
                                 <input type="hidden" th:name="user" th:value="*{user.id}">
                                 <input type="submit" value="Delete User" >
                             </form>
-                         </td>
-
+                        </div>
+                    </td>
+                    <td>
+                    <th:block th:each="order, itemStat : ${user.getOrderList()}" th:classappend="${itemStat.odd} ? 'odd-row' : 'even-row'">
+                        <th:block th:each="prod, itemStat : ${order.getProducts()}" th:classappend="${itemStat.odd} ? 'odd-row' : 'even-row'">
+                        <table border="1">
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+                                <th>Img</th>
+                            </tr>
+                            <tr>
+                               <td> <span th:text="${prod.getId()}">  </span>  </td>
+                                <td>  <span th:text="${prod.getName()}">  </span>  </td>
+                                <td>  <span th:text="${prod.getPrice()}">  </span>  </td>
+                                <td>  <img th:src="@{${prod.getImg()}}" th:width="177" th:height="100"/>   </span>  </td>
+                            </tr>
+                        </table>
+                        </th:block>
+                    </th:block>
                     </td>
 
+                    <td>
+                        <form name="user" th:action="@{/admin/order}"   method="post">
+                            <input type="hidden" th:name="user" th:value="*{user.id}">
+                            <input type="submit" value="Delete Order" >
+                        </form>
+                    </td>
                 </tr>
             </table>
         </div>

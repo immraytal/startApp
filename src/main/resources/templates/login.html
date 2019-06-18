@@ -5,26 +5,26 @@
     <title>Title</title>
 </head>
 <body>
-<a th:href="@{/}">Назад в main</a><br>
+<a th:href="@{/}">Back tp main</a><br>
 <form th:action="@{/login}" method="POST">
-    <span class="form-title">Вход</span>
+    <span class="form-title">Sign in</span>
     <br>
 
-    <label>Адрес электронной почты<br>
-        <input type="text" th:name="email" placeholder="Email">
+    <label>Username<br>
+        <input type="text" th:name="username" placeholder="username">
     </label>
     <br>
 
-    <label>Пароль<br>
-        <input type="password" th:name="password" placeholder="Password">
+    <label>Password<br>
+        <input type="password" th:name="password" placeholder="password">
     </label>
     <br>
 
     <input type="submit" class="button-1" style="cursor: pointer;" value="Login">
     <br>
-    <a th:href="@{/forgotpassword}" class="lost-password">Забыли пароль?</a>
+    <a th:href="@{/forgotpassword}" class="lost-password">Forgot password?</a>
     <br>
-    <a th:href="@{registration}"  class="registration">Регистрация</a>
+    <a th:href="@{registration}"  class="registration">Sign up</a>
 </form>
 </body>
 </html>
