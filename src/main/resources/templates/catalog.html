@@ -11,23 +11,33 @@
 
         <div>
            <div th:if="${products != null}">
+               <h2>Products:</h2>
               <th:block th:each="prod : ${products}">
-                  <div>
-                      <span th:text="${prod.getId()}">  </span>
-                      <br>
-                      <span th:text="${prod.getName()}">  </span>
-                      <br>
-                      <span th:text="${prod.getPrice()}">  </span>
-                      <br>
-                      <span th:text="${prod.getImg()}">  </span>
-                      <br>
-                  </div>
-                  <div class="button-group" sec:authorize="isFullyAuthenticated()">
-                      <form name="product" th:action="@{/catalog}" method="post">
-                          <input type="hidden" th:id="product" th:name="product" th:value="*{prod.id}">
-                          <input type="submit">
-                      </form>
-                  </div>
+                  <table border="1">
+                      <tr>
+                          <th>Product ID</th>
+                          <th>Product Name</th>
+                          <th>Price</th>
+                          <th>Img</th>
+                        <span sec:authorize="isFullyAuthenticated()">
+                            <th>Make order</th>
+                        </span>
+                      </tr>
+                      <tr>
+                          <td> <span th:text="${prod.getId()}">  </span>  </td>
+                          <td>  <span th:text="${prod.getName()}">  </span>  </td>
+                          <td>  <span th:text="${prod.getPrice()}">  </span>  </td>
+                          <td>  <span th:text="${prod.getImg()}">  </span>  </td>
+                          <div class="button-group" sec:authorize="isFullyAuthenticated()">
+                             <td>
+                                  <form name="product" th:action="@{/catalog}" method="post">
+                                      <input type="hidden" th:id="product" th:name="product" th:value="*{prod.id}">
+                                      <input type="submit">
+                                  </form>
+                            </td>
+                          </div>
+                      </tr>
+                  </table>
               </th:block>
            </div>
 

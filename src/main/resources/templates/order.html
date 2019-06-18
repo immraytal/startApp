@@ -7,20 +7,28 @@
     <title>Success</title>
 </head>
 <body>
+<span sec:authorize="isFullyAuthenticated()">
 <div>
     <form name="product" th:action="@{/order}" method="post">
 
 
-    <span th:text="${user.getUsername()}">  </span>
-    <br>
-    <span th:text="${prod.getId()}">  </span>
-    <br>
-    <span th:text="${prod.getName()}">  </span>
-    <br>
-    <span th:text="${prod.getPrice()}">  </span>
-    <br>
-    <span th:text="${prod.getImg()}">  </span>
-    <br>
+        <table border="1">
+            <tr>
+                <th>Profile</th>
+                <th>Product ID</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Img</th>
+            </tr>
+            <tr>
+                <td> <span th:text="${user.getUsername()}">  </span> </td>
+                <td> <span th:text="${prod.getId()}">  </span>  </td>
+                <td>  <span th:text="${prod.getName()}">  </span>  </td>
+                <td>  <span th:text="${prod.getPrice()}">  </span>  </td>
+                <td>  <span th:text="${prod.getImg()}">  </span>  </td>
+            </tr>
+        </table>
+
     <h2>Are you sure?</h2>
         <input type="hidden" th:id="product" th:name="product" th:value="*{prod.id}">
         <input type="submit">

@@ -8,26 +8,38 @@
 <body>
     <a th:href="@{/main}">Назад в main</a><br>
         <div>
-            <th:block th:each="user : ${users}">
-                <div>
-                    <span th:text="${user.getId()}"> </span>
-                    <br>
-                    <span th:text="${user.getUsername()}"> </span>
-                    <br>
-                    <span th:text="${user.getPassword()}"> </span>
-                    <br>
-                    <span th:text="${user.getRoles()}"> </span>
-                    <br>
-                    <span th:text="${user.getMatchingPassword()}"> </span>
-                    <br>
-                </div>
+            <table border="1">
+                <tr>
+                    <th>User</th>
+                    <th>Delete</th>
+                </tr>
+                <tr th:each="user : ${users}">
+                    <td>
+                        <div>
+                            <table border="1">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>UserName</th>
+                                    <th>Roles</th>
+                                </tr>
+                                <tr>
+                                    <td> <span th:text="${user.getId()}"> </span> </td>
+                                    <td> <span th:text="${user.getUsername()}"> </span> </td>
+                                    <td> <span th:text="${user.getRoles()}"> </span> </td>
+                                </tr>
+                            </table>
+                        </div>
+                         <td>
+                            <form name="user" th:action="@{/admin}"   method="post">
+                                <input type="hidden" th:name="user" th:value="*{user.id}">
+                                <input type="submit" value="Delete User" >
+                            </form>
+                         </td>
 
-                <form name="user" th:action="@{/admin}"   method="post">
-                    <input type="hidden" th:name="user" th:value="*{user.id}">
-                    <input type="submit" >
-                </form>
+                    </td>
 
-            </th:block>
+                </tr>
+            </table>
         </div>
 
 </body>
